@@ -32,7 +32,12 @@ export default {
                     type: 'date',
                     title: 'Year',
                 },
-
+                {
+                    title: 'Eventos',
+                    name: 'eventos',
+                    type: 'object',
+                    to: [{ type: 'reference', to: [{ type: "eventos" }], weak: true }]
+                }
             ]
         }
     ]
