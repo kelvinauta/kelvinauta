@@ -33,7 +33,6 @@ export default {
                     title: 'Year',
                 },
 
-
             ]
         }
     ]
