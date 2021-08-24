@@ -1,0 +1,29 @@
+{
+  "name": "kelvinauta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gatsby-config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuperKleber/kelvinauta.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SuperKleber/kelvinauta/issues"
+  },
+  "homepage": "https://github.com/SuperKleber/kelvinauta#readme",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "gatsby": "^2.24.47",
+    "gatsby-plugin-env-variables": "^2.1.0",
+    "gatsby-plugin-react-helmet": "^3.3.10",
+    "gatsby-source-sanity": "^7.0.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0"
+  }
+}
