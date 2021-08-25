@@ -3,24 +3,10 @@ export default {
     title: "Biografía",
     type: "document",
     fields: [{
-            name: "fotos",
+            name: "foto",
             type: "array",
-            title: "fotos",
-            of: [{
-                    name: "src",
-                    type: "url",
-                    title: "Src",
-                },
-                {
-                    name: "title",
-                    type: "string",
-                    title: "Title",
-                },
-                {
-                    name: "description",
-                    type: "string",
-                    title: "Description",
-                },
+            title: "Fotos",
+            of: [{type:"fotos"}
             ],
         },
         {
