@@ -1,3 +1,4 @@
+import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import { Box, Button, Flex, Heading, ThemeProvider } from "theme-ui";
 import Layout from "../components/layout";
@@ -8,16 +9,14 @@ const Index = ({ data }) => {
     <ThemeProvider theme={theme}>
     <Layout>
       <Seo title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <h1>My Portfolio</h1>
-      <Box p={4} bg="highlight">
+    
   <Flex
     sx={{
       alignItems: 'center',
     }}>
-    <Heading>Components</Heading>
-    <Button ml="auto">Beep</Button>
+      <img src="https://i.ytimg.com/vi/8O20G2aX5W0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLATrFDL22NTZ0ASDeAiFNottQlLyQ" />
   </Flex>
-</Box>
+
       <ul
         style={{
           listStyle: 'none',

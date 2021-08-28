@@ -15,42 +15,37 @@ const Header = ({ data }) => {
         <header>
 
             <Flex className="logo">
-                <a href="/">
-                    Logo
-                    <img />
+                <a href="/" style={{textDecoration:"none",fontSize:24,color:"white",fontWeight:900}}>
+                  KELVINAUTA
                 </a>
             </Flex>
             <div className="container-menu">
 
             <Flex as="nav">
-                <NavLink className={url==="/canciones"?"hover":""} href="canciones" p={2}>
-                    Canciones
-                </NavLink>
-                <NavLink className={url==="/historias"?"hover":""} href="historias" p={2}>
-                    Historias
-                </NavLink>
-                <NavLink className={url==="/biografia"?"hover":""} href="biografia" p={2}>
-                    Biografía
-                </NavLink>
+            <Link className={url==="/canciones"?"hover":"normal"} to="/canciones">CANCIONES</Link>
+            <Link className={url==="/historias"?"hover":"normal"} to="/historias">HISTORIAS</Link>
+            <Link className={url==="/biografia"?"hover":"normal"} to="/biografia">BIOGRAFIA</Link>
+               
+            
             </Flex>
                <Flex className="redes-sociales">
                <a className="espacios" target="_blank" href={data.enlaces[0].facebook}>
-                    <FontAwesomeIcon icon={["fab", "facebook-square"]} size="1x" style={{ color: "#000000" }} />
+                    <FontAwesomeIcon icon={["fab", "facebook-square"]} size="1x" style={{ color: "#fff",fontSize:20 }} />
                 </a>
                    
                <a className="espacios" target="_blank" href={data.enlaces[0].instagram}>
-                    <FontAwesomeIcon icon={["fab", "instagram"]} size="1x" style={{ color: "#000000" }} />
+                    <FontAwesomeIcon icon={["fab", "instagram"]} size="1x" style={{color: "#fff",fontSize:20 }} />
                 </a>
                    
                <a className="espacios" target="_blank" href={data.enlaces[0].tiktok}>
-                    <FontAwesomeIcon icon={["fab", "tiktok"]} size="1x" style={{ color: "#000000" }} />
+                    <FontAwesomeIcon icon={["fab", "tiktok"]} size="1x" style={{ color: "#fff",fontSize:20}} />
                 </a>
                    
                <a className="espacios" target="_blank" href={data.enlaces[0].discord}>
-                    <FontAwesomeIcon icon={["fab", "discord"]} size="1x" style={{ color: "#000000" }} />
+                    <FontAwesomeIcon icon={["fab", "discord"]} size="1x" style={{ color: "#fff",fontSize:20}} />
                 </a>
                <a className="espacios" target="_blank" href={data.enlaces[0].youtube}>
-                    <FontAwesomeIcon icon={["fab", "youtube"]} size="1x" style={{ color: "#000000" }} />
+                    <FontAwesomeIcon icon={["fab", "youtube"]} size="1x" style={{ color: "#fff",fontSize:20 }} />
                 </a>
 
                </Flex>

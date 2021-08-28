@@ -13,6 +13,11 @@ export default {
         title: "Letra"
     },
     {
+        name: 'slug',
+        type: 'string',
+        title: "Slug"
+    },
+    {
         name: 'lore',
         type: 'text',
         title: "Lore"

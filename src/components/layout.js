@@ -56,26 +56,26 @@ const Layout = ({ children }) => (
                         <br />
                         <div className="container-footer">
                             <div>
-                                © {new Date().getFullYear()}, {datos.title}
+                                © {datos.title} {new Date().getFullYear()}. All rights reserved. Designed & Developed by
                             </div>
                             <Flex className="redes-sociales">
                                 <a className="espacios" target="_blank" href={datos.enlaces[0].facebook}>
-                                    <FontAwesomeIcon icon={["fab", "facebook-square"]} size="1x" style={{ color: "#000000" }} />
+                                    <FontAwesomeIcon icon={["fab", "facebook-square"]} size="1x" style={{ color: "#fff",fontSize:20 }} />
                                 </a>
 
                                 <a className="espacios" target="_blank" href={datos.enlaces[0].instagram}>
-                                    <FontAwesomeIcon icon={["fab", "instagram"]} size="1x" style={{ color: "#000000" }} />
+                                    <FontAwesomeIcon icon={["fab", "instagram"]} size="1x" style={{ color: "#fff",fontSize:20 }} />
                                 </a>
 
                                 <a className="espacios" target="_blank" href={datos.enlaces[0].tiktok}>
-                                    <FontAwesomeIcon icon={["fab", "tiktok"]} size="1x" style={{ color: "#000000" }} />
+                                    <FontAwesomeIcon icon={["fab", "tiktok"]} size="1x" style={{ color: "#fff",fontSize:20 }} />
                                 </a>
 
                                 <a className="espacios" target="_blank" href={datos.enlaces[0].discord}>
-                                    <FontAwesomeIcon icon={["fab", "discord"]} size="1x" style={{ color: "#000000" }} />
+                                    <FontAwesomeIcon icon={["fab", "discord"]} size="1x" style={{ color: "#fff",fontSize:20 }} />
                                 </a>
                                 <a className="espacios" target="_blank" href={datos.enlaces[0].youtube}>
-                                    <FontAwesomeIcon icon={["fab", "youtube"]} size="1x" style={{ color: "#000000" }} />
+                                    <FontAwesomeIcon icon={["fab", "youtube"]} size="1x" style={{ color: "#fff",fontSize:20 }} />
                                 </a>
 
                             </Flex>

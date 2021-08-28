@@ -12,8 +12,7 @@ import epoca from "./objects/epoca";
 import enlaces from "./objects/enlaces";
 import contactos from "./objects/contactos";
 import redessociales from "./objects/redessociales";
-import fotos from "./objects/fotos";
-console.log("dasgsdf")
+import fotos from "./objects/fotos";    
     // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
     // We name our schema

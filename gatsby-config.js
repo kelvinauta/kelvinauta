@@ -3,6 +3,7 @@ module.exports = {
   'gatsby-plugin-theme-ui',
     "gatsby-plugin-fontawesome-css",
     "gatsby-plugin-image",
+   
     {
       resolve: `gatsby-source-sanity`,
       options: {
