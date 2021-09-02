@@ -12,7 +12,7 @@ const Details = ({ data }) => {
   return <Layout>
     <SEO title="Canciones" keywords={[`gatsby`, `application`, `react`]} />
   
-    <Grid gap={2} columns={[2, '2fr 2fr']}>
+    <Grid  className="cards-grid" gap={2} columns={[2, '2fr 2fr']}>
   <Box>
 <iframe width="100%" height="250px" src={item.enlace[0].youtube} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

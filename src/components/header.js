@@ -1,4 +1,4 @@
-import { faAtom, faCoffee } from "@fortawesome/free-solid-svg-icons"
+import { faAtom, faCoffee, faHamburger } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { graphql, Link } from "gatsby"
 import PropTypes from "prop-types"
@@ -6,50 +6,48 @@ import React from "react"
 import { Flex, NavLink } from "theme-ui"
 
 
-
-
 const Header = ({ data }) => {
     const url = typeof window !== 'undefined' ? window.location.pathname : '';
     console.log(url)
     return <div className="container-header">
         <header>
+            <div className="container__nav">
 
+           
             <Flex className="logo">
-                <a href="/" style={{textDecoration:"none",fontSize:24,color:"white",fontWeight:900}}>
-                  KELVINAUTA
-                </a>
+            <Link style={{textDecoration:"none",fontSize:24,color:"white",fontWeight:900}} className="normal"  to="/">KELVINAUTA
+        
+        <div className={url==="/"?"hover mostrar":"normal mostrar" }></div>
+        </Link>
+            
+               
+                <label for="menu" className="nav_label">
+                <FontAwesomeIcon className="nav__img" color="white" style={{paddingLeft:"8px",fontSize:"32px"}} icon={"bars"} size="2x" />
+                </label>
             </Flex>
+                <input type="checkbox" id="menu" className="checkmenu"/>
             <div className="container-menu">
 
             <Flex as="nav">
-            <Link className={url==="/canciones"?"hover":"normal"} to="/canciones">CANCIONES</Link>
-            <Link className={url==="/historias"?"hover":"normal"} to="/historias">HISTORIAS</Link>
-            <Link className={url==="/biografia"?"hover":"normal"} to="/biografia">BIOGRAFIA</Link>
+            <Link className="normal"  to="/canciones">CANCIONES
+        
+            <div className={url==="/canciones"?"hover mostrar":"normal mostrar" }></div>
+            </Link>
+          
+            <Link className="normal" to="/historias">HISTORIAS
+            <div className={url==="/historias"?"hover mostrar":"normal mostrar"}></div>
+         
+            </Link>
+            <Link className="normal" to="/biografia">BIOGRAFIA
+            <div className={url==="/biografia"?"hover mostrar":"normal mostrar"}></div>
+           
+            </Link>
                
             
             </Flex>
-               <Flex className="redes-sociales">
-               <a className="espacios" target="_blank" href={data.enlaces[0].facebook}>
-                    <FontAwesomeIcon icon={["fab", "facebook-square"]} size="1x" style={{ color: "#fff",fontSize:20 }} />
-                </a>
-                   
-               <a className="espacios" target="_blank" href={data.enlaces[0].instagram}>
-                    <FontAwesomeIcon icon={["fab", "instagram"]} size="1x" style={{color: "#fff",fontSize:20 }} />
-                </a>
-                   
-               <a className="espacios" target="_blank" href={data.enlaces[0].tiktok}>
-                    <FontAwesomeIcon icon={["fab", "tiktok"]} size="1x" style={{ color: "#fff",fontSize:20}} />
-                </a>
-                   
-               <a className="espacios" target="_blank" href={data.enlaces[0].discord}>
-                    <FontAwesomeIcon icon={["fab", "discord"]} size="1x" style={{ color: "#fff",fontSize:20}} />
-                </a>
-               <a className="espacios" target="_blank" href={data.enlaces[0].youtube}>
-                    <FontAwesomeIcon icon={["fab", "youtube"]} size="1x" style={{ color: "#fff",fontSize:20 }} />
-                </a>
-
-               </Flex>
+              
              
+            </div>
             </div>
         </header>
        

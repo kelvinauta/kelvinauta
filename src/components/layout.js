@@ -6,9 +6,10 @@ import Header from './header';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faBars} from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Flex } from 'theme-ui';
-library.add(fab, faCheckSquare, faCoffee)
+library.add(fab, faCheckSquare, faCoffee,faBars)
 const Layout = ({ children }) => (
     <StaticQuery
         query={graphql`
@@ -52,6 +53,7 @@ const Layout = ({ children }) => (
                         </div>
                     </main>
                     <footer>
+                        <div className="container_footer">
                         <div className="separador"></div>
                         <br />
                         <div className="container-footer">
@@ -79,6 +81,7 @@ const Layout = ({ children }) => (
                                 </a>
 
                             </Flex>
+                        </div>
                         </div>
                     </footer>
                 </div>

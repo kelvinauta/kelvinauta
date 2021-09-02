@@ -12,18 +12,18 @@ const Historias = ({ data }) => {
   const historias = data.allSanityHistorias.nodes;
     return <Layout>
       <article>
-      <Grid sx={{
+      <Grid className="cards-grid" sx={{
         maxWidth: "1200px !important"
-      }} gap={2} columns={[2,'2fr 2fr']}>
+      }} gap={2} columns={[2, 2]}>
 
         {
           historias.map((item, index) => {
             return <Link style={{textDecoration:"none"}} to={`/historia/${item.slug}`}>
-              <Box style={{backgroundColor:"#1f1f1f",padding:"24px"}} className="card-cancion" key={index}>
-              <Grid gap={2} columns={[2, '2fr 2fr']}>
+              <Box style={{backgroundColor:"#1f1f1f",padding:"24px",borderRadius:16}} className="card-cancion" key={index}>
+              <Grid gap={2} columns={[2, '1fr']} className="cards-grid">
                <GatsbyImage style={{borderRadius:16}} image={item.banner.asset.gatsbyImageData} />
                <div>
-                <span style={{fontSize:24,color:"#663399",fontWeight:900}}>{item.title} </span>
+                <span style={{fontSize:24,color:"#fff",fontWeight:900}}>{item.title} </span>
                 <span className="description">
                   {item.description}
                 </span>

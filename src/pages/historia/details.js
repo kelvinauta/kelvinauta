@@ -14,7 +14,7 @@ const Details = ({ data }) => {
     <SEO title="Canciones" keywords={[`gatsby`, `application`, `react`]} />
   <article style={{color:"#d2d2d2"}}>
 
-    <Grid gap={2} columns={[2, '2fr 2fr']}>
+    <Grid  className="cards-grid" gap={2} columns={[2, '2fr 2fr']}>
   <Box>
   <GatsbyImage style={{borderRadius:16}} image={item.banner.asset.gatsbyImageData} />
   </Box>
