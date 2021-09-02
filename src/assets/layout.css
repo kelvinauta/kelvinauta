@@ -34,6 +34,10 @@
     align-items: center;
 }
 
+.texto{
+    color: white !important;
+}
+
 main{
     margin: 32px 0px 32px 0px;
     max-width: 1200px;

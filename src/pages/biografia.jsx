@@ -5,12 +5,14 @@ import { StaticQuery, graphql } from 'gatsby';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBatteryEmpty, faCogs, faTruckMonster } from "@fortawesome/free-solid-svg-icons";
 import { Box, Flex } from "theme-ui";
+import SEO from "../components/seo";
 
 
 const Biografía = ({ data }) => {
   let dataBio = data.allSanityBiografy.nodes[0].epocas;
   dataBio.reverse()
   return <Layout>
+       <SEO title="Biografia" keywords={[`gatsby`, `application`, `react`]} />
     <Box className="conta">
 
 
