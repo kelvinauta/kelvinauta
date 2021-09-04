@@ -38,7 +38,7 @@ const Header = ({ data }) => {
             <div className={url==="/historias"?"hover mostrar":"normal mostrar"}></div>
          
             </Link>
-            <Link className="normal" to="/biografia">BIOGRAFIA
+            <Link className="normal" to="/biografia">BIOGRAFÍA
             <div className={url==="/biografia"?"hover mostrar":"normal mostrar"}></div>
            
             </Link>
