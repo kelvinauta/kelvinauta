@@ -14,19 +14,19 @@ const Canciones = ({ data }) => {
     <SEO title="Canciones" keywords={[`gatsby`, `application`, `react`]} />
     <div>
 
-      <Grid sx={{
+      <Grid className="cards-grid" sx={{
         maxWidth: "1200px !important"
       }} gap={2} columns={[2, 3]}>
 
         {
           canciones.map((item, index) => {
             return <Link style={{textDecoration:"none"}} to={`/cancion/${item.slug}`}>
-              <Box className="card-cancion" key={index}>
+                 <Box style={{backgroundColor:"#1f1f1f",padding:"24px",borderRadius:16}} className="card-cancion" key={index}>
                 <iframe width="100%" height="250px" src={item.enlace[0].youtube} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-            
-                <h3>{item.title} </h3>
-                <p>Letra y mas <FontAwesomeIcon color="black" style={{paddingLeft:"8px",fontSize:"20px"}} icon={faArrowAltCircleRight} size="1x" /> </p>
+                <span style={{fontSize:24,color:"#fff",fontWeight:900}}>{item.title} </span>
+              
+                <p style={{textAlign:"right",color:"white !important",marginTop:8}}>Leer mas <FontAwesomeIcon color="white" style={{paddingLeft:"8px",fontSize:"24px"}} icon={faArrowAltCircleRight} size="1x" /> </p>
               </Box>
             </Link>
           })

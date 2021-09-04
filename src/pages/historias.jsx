@@ -6,6 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { Box, Grid } from "theme-ui";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
+import SEO from "../components/seo";
 
 const Historias = ({ data }) => {
   const historias = data.allSanityHistorias.nodes;

@@ -27,14 +27,14 @@ const path = require(`path`)
     result.data.canciones.nodes.forEach(cancion => {
       createPage({
         path:"/cancion/"+cancion.slug,
-        component:path.resolve("./src/pages/cancion/details.js"),
+        component:path.resolve("./src/templates/cancionTemplate.jsx"),
         context:{slug:cancion.slug}
     })
     })
     result.data.historias.nodes.forEach(historia => {
       createPage({
         path:"/historia/"+historia.slug,
-        component:path.resolve("./src/pages/historia/details.js"),
+        component:path.resolve("./src/templates/historiaTemplate.jsx"),
         context:{slug:historia.slug}
     })
     })

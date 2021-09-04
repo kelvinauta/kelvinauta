@@ -5,44 +5,71 @@ import { StaticQuery, graphql } from 'gatsby';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBatteryEmpty, faCogs, faTruckMonster } from "@fortawesome/free-solid-svg-icons";
 import { Box, Flex } from "theme-ui";
+import SEO from "../components/seo";
 
 
 const Biografía = ({ data }) => {
-    return <Layout>
-        <Flex>
-          <Box>
-          <FontAwesomeIcon color="white" style={{paddingLeft:"8px"}} icon={faCogs} size="10x" />
-          </Box>
-          <Box style={{display:"flex",justifyContent:"center",alignItems:"center",paddingLeft:32}}>
-            <h3>Pagina en desarrollo</h3>
-          </Box>
-        </Flex>
-    </Layout>
+  let dataBio = data.allSanityBiografy.nodes[0].epocas;
+  dataBio.reverse()
+  return <Layout>
+       <SEO title="Biografia" keywords={[`gatsby`, `application`, `react`]} />
+    <Box className="conta">
+
+
+      <div class="timeline">
+        <ul>
+
+          {
+            dataBio.map(item => {
+              return <>
+
+                   { item.eventos.map(itema => {
+                      return <li>
+                      <div class="timeline-content">
+                        <h3 class="date">{item.year} - {itema.date}</h3>
+                       
+                            
+                              <p>{itema.texto} </p>
+                         
+                        
+      
+                      </div>
+                    </li>
+                    })}
+                  </>
+
+            })
+          }
+
+        </ul>
+      </div>
+    </Box>
+
+  </Layout>
 }
 
 
 Biografía.propTypes = {
-    children: PropTypes.node.isRequired
-  };
-  
-  export default Biografía;
+  children: PropTypes.node.isRequired
+};
+
+export default Biografía;
 
 
-  
+
 export const query = graphql`
 {
-  allSanityCanciones {
-      nodes {
-        letra
-        lore
-        tiktoks
-        title
-        enlace {
-          spotify
-          youtube
+  allSanityBiografy {
+    nodes {
+      epocas {
+        eventos {
+          texto
+          date(locale: "")
         }
+        year
       }
     }
+  }
     
 }
 `;
