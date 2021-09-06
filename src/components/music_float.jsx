@@ -33,8 +33,8 @@ const MusicIcon = () => {
     return <div class="cajaf">
         
         <a href="#" class="btn_roundf" title="Imprimir" alt="impirmir"><FontAwesomeIcon spin={isChecked} color="white" icon={faMusic} size="1x" /></a>
-        <a class="caja1" href="#" alt="contrato" title="Contrato">
-        {isChecked ? <FontAwesomeIcon onClick={()=>Stop()} color="white" icon={faPauseCircle} size="2x" /> :  <FontAwesomeIcon onClick={()=>Play()} color="white" icon={faPlayCircle} size="2x" />}
+        <a class="caja1" target="_blank" href="https://www.youtube.com/watch?v=rha1o1OnnBc&t=21s" alt="No funciona en burros" title="No funciona en burros">
+        {isChecked ? <FontAwesomeIcon onClick={()=>Stop()} color="white" icon={faPauseCircle} size="2x" /> :  <FontAwesomeIcon href="https://www.youtube.com/watch?v=rha1o1OnnBc&t=21s" target="_blank" color="white" icon={faPlayCircle} size="2x" />}
        
         </a>
        {/*  <a class="caja2" href="#" alt="comprobante" title="Comprobante"> <FontAwesomeIcon color="white" icon={faPlayCircle} size="2x" /></a> */}

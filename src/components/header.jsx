@@ -42,6 +42,10 @@ const Header = ({ data }) => {
             <div className={url==="/biografia"?"hover mostrar":"normal mostrar"}></div>
            
             </Link>
+            <Link className="normal" to="/museo-arte">MUSEO DE ARTE
+            <div className={url==="/museo-arte"?"hover mostrar":"normal mostrar"}></div>
+           
+            </Link>
                
             
             </Flex>

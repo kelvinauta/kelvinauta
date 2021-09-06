@@ -8,9 +8,10 @@ export default {
         title: "Title"
     },
     {
-        name: 'letra',
-        type: 'text',
-        title: "Letra"
+        name: 'contenido',
+        type: 'array',
+        of: [{ type: 'block' }],
+        title: "Contenido"
     },
     {
         name: 'slug',

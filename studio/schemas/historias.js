@@ -18,9 +18,10 @@ export default {
             title: "Description"
         },
         {
-            name: 'body',
-            type: 'text',
-            title: "Body"
+            name: 'contenido',
+            type: 'array',
+            of: [{ type: 'block' }],
+            title: "Contenido"
         },
         {
             name: 'banner',
