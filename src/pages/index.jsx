@@ -113,7 +113,7 @@ const Index = ({ data }) => {
 
       </Grid>
       <br/>
-            <h2 style={{color:"white",fontSize:"2.5em"}} >Biografía</h2>
+            <h2 style={{color:"white",fontSize:"2.5em"}} >Historias</h2>
             <article>
             <Grid className="cards-grid" sx={{
         maxWidth: "1200px !important",padding:"24px 0"
@@ -191,7 +191,6 @@ export const query = graphql`
       }
     }
   }
-
   allSanityHistorias {
     nodes {
       body
