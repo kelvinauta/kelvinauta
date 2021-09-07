@@ -5,62 +5,72 @@ import { StaticQuery, graphql, Link } from 'gatsby';
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Box, Grid } from "theme-ui";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import blocksToHtml from '@sanity/block-content-to-html'
 import Title from 'react-vanilla-tilt'
 import { faArrowAltCircleRight, faPauseCircle, faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 import SEO from "../components/seo";
+const BlockContent = require('@sanity/block-content-to-react')
 
 
 const MuseoArte = ({ data }) => {
-    const historias = data.allSanityHistorias.nodes;
-    const [isChecked,setIsChacked] = useState(false)
+    const artes = data.allSanityMuseoarte.nodes;
+    const [isChecked, setIsChacked] = useState(false)
+    const [autoplay, setAutoplay] = useState(0)
 
-    useEffect(()=>{
-      
+    useEffect(() => {
+
     })
+    const h = blocksToHtml.h
+
+    const serializers = {
+        types: {
+            code: props => (
+                h('pre', { className: ""},
+                    h('code', "dfd")
+                )
+            )
+        }
+    }
+
+    const Play = (index, url) => {
+        console.log(index, url)
+        let iframe = document.getElementById(`${index}`)
+        iframe.src = `${url}&&autoplay=1`
+
+    }
     return <Layout>
         <SEO title="Historias" keywords={[`gatsby`, `application`, `react`]} />
         <article>
-            <Grid className="cards-grid" sx={{
+            <Grid className="class-grid" sx={{
                 maxWidth: "1200px !important"
             }} gap={2} columns={[2, 4]}>
-              <Title className="title-card" options={{ scale: 2, max: 25,speed:400 }}>
-  
+                {
+                    artes.map((item, index) => {
+                        return <Title className="title-card" options={{ scale: 2, max: 25, speed: 400 }}>
 
-                <div className="card" >
-                    <img className="imagen-fondo" src="fondo.jpg" alt="imagen test" />
-                    <div className="content">
-                        <h2>01</h2>
-                        <h3>Card one</h3>
-                        <p>
-                            kasjdhfvkbal diogabuvsuhyldjbaLUIJKBSKaghsvñoiAS
-                            ablsjhvAJCSVCUklniguof8it7jbkoiñnhsduioay
-                        </p>
-                        <a class="" target="_blank" href="https://www.youtube.com/watch?v=rha1o1OnnBc&t=21s" alt="No funciona en burros" title="No funciona en burros">
-                            {isChecked ? <FontAwesomeIcon onClick={() => {}} color="white" icon={faPauseCircle} size="2x" /> : <FontAwesomeIcon href="https://www.youtube.com/watch?v=rha1o1OnnBc&t=21s" target="_blank" color="white" icon={faPlayCircle} size="2x" />}
 
-                        </a>
-                    </div>
-                </div>
-                </Title>
-                <Title className="title-card" options={{ scale: 2, max: 25,speed:400 }}>
-  
+                            <div className="card" >
+                                <img className="imagen-fondo" src={item.imagen.asset.url} alt="imagen test" />
+                                <div className="content">
+                                    <h2>{index + 1}</h2>
+                                    <h3>{item.title}</h3>
+                                    <p>
+                                        {item.descripcion}
+                                        
+                                       
+                                    </p>
+                                    <iframe id={item.id} key={index} style={{ opacity: 0 }} width="0" height="0" src={item.musica} title={item.title} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    <div style={{ cursor: "pointer" }}>
+                                        {isChecked ? <FontAwesomeIcon onClick={() => { }} color="white" icon={faPauseCircle} size="2x" /> : <FontAwesomeIcon onClick={() => Play(item.id, item.musica)} color="white" icon={faPlayCircle} size="2x" />}
 
-  <div className="card" >
-      <img className="imagen-fondo" src="fondo.jpg" alt="imagen test" />
-      <div className="content">
-          <h2>01</h2>
-          <h3>Card one</h3>
-          <p>
-              kasjdhfvkbal diogabuvsuhyldjbaLUIJKBSKaghsvñoiAS
-              ablsjhvAJCSVCUklniguof8it7jbkoiñnhsduioay
-          </p>
-          <a class="" target="_blank" href="https://www.youtube.com/watch?v=rha1o1OnnBc&t=21s" alt="No funciona en burros" title="No funciona en burros">
-              {isChecked ? <FontAwesomeIcon onClick={() => {}} color="white" icon={faPauseCircle} size="2x" /> : <FontAwesomeIcon href="https://www.youtube.com/watch?v=rha1o1OnnBc&t=21s" target="_blank" color="white" icon={faPlayCircle} size="2x" />}
+                                    </div>
+                                </div>
+                            </div>
+                        </Title>
 
-          </a>
-      </div>
-  </div>
-  </Title>
+                    })
+                }
+
             </Grid>
 
         </article>
@@ -77,19 +87,29 @@ export default MuseoArte;
 
 export const query = graphql`
 {
-  allSanityHistorias {
-    nodes {
-      body
-      description
-      title
-      slug
-      banner {
-        asset {
-          gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+    allSanityMuseoarte {
+        nodes {
+            id
+          colabaracion
+          descripcion
+          musica
+          title
+          contenido {
+            children {
+                marks
+                text
+                _key
+                _type
+              }
+              style
+          }
+          imagen {
+            asset {
+              url
+            }
+          }
         }
       }
-    }
-  }
     
 }
 `;

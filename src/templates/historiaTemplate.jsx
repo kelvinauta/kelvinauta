@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql, useStaticQuery } from 'gatsby';
@@ -47,7 +46,7 @@ export default HistoriaTemplate;
 export const query = graphql`
 query Historia($slug: String) {
     sanityHistorias(slug: {eq: $slug}) {
-    body
+   
     description
     slug
     title

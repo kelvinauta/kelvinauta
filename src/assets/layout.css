@@ -462,6 +462,16 @@ span{
     .cards-grid{
         grid-template-columns:2fr !important;
     }
+    .class-grid .card{
+        width: 100% !important;
+    }
+    .class-grid .title-card{
+       padding: 16px !important;
+       width: 100% !important;
+    }
+    .class-grid{
+        grid-template-columns:1fr !important;
+    }
 
     
 .container-footer{
@@ -574,13 +584,13 @@ span{
     box-shadow: 20px 20px 50px rgba(0,0,0,0.5);
     background: rgba(255,255,255,.1);
     border-radius: 15px;
+    border-top: 1px solid rgba(255,255,255,.5);
+    border-left: 1px solid rgba(255,255,255,.5);
+    backdrop-filter: blur(5px);
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid rgba(255,255,255,.5);
-    border-left: 1px solid rgba(255,255,255,.5);
-    backdrop-filter: blur(5px);
 
 }
 
@@ -589,6 +599,8 @@ span{
 }
 .imagen-fondo{
     position: absolute;
+    
+   width: 250px;
 }
 
 .title-card{

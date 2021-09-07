@@ -49,7 +49,6 @@ export const query = graphql`
 query Cancion($slug: String) {
     sanityCanciones(slug: {eq: $slug}) {
       id
-      letra
       lore
       tiktoks
       title
