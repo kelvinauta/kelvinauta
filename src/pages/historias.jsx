@@ -58,19 +58,13 @@ Historias.propTypes = {
   
 export const query = graphql`
 {
-  allSanityMuseoarte {
+  allSanityHistorias {
     nodes {
-      colabaracion
-      descripcion
-      musica
+    
+      description
       title
-      contenido {
-        children {
-          marks
-          text
-        }
-      }
-      imagen {
+      slug
+      banner {
         asset {
           gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
         }
