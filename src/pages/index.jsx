@@ -181,7 +181,7 @@ export const query = graphql`
     nodes {
       id
       slug
-      letra
+     
       lore
       title
       tiktoks
@@ -193,7 +193,7 @@ export const query = graphql`
   }
   allSanityHistorias {
     nodes {
-      body
+      
       description
       title
       slug

@@ -51,7 +51,6 @@ export const query = graphql`
       nodes {
         id
         slug
-        letra
         lore
         title
         tiktoks

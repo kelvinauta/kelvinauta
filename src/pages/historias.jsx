@@ -82,17 +82,16 @@ Historias.propTypes = {
 export default Historias;
 
 export const query = graphql`
-  {
-    allSanityHistorias {
-      nodes {
-        body
-        description
-        title
-        slug
-        banner {
-          asset {
-            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-          }
+{
+  allSanityHistorias {
+    nodes {
+    
+      description
+      title
+      slug
+      banner {
+        asset {
+          gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
         }
       }
     }

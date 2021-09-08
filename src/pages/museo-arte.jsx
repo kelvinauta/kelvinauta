@@ -6,63 +6,82 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import { Box, Grid } from "theme-ui";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Title from 'react-vanilla-tilt'
-import { faArrowAltCircleRight, faPauseCircle, faPlayCircle } from "@fortawesome/free-solid-svg-icons";
+import { faArrowAltCircleRight, faBook, faPauseCircle, faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 import SEO from "../components/seo";
+import Body from "../components/body";
+import BlockContent from "@sanity/block-content-to-react"
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
+import 'sweetalert2/src/sweetalert2.scss'
+import "animate.css"
+import { Modal } from "../components/modal";
+
+
+
 
 
 const MuseoArte = ({ data }) => {
-    const historias = data.allSanityHistorias.nodes;
-    const [isChecked,setIsChacked] = useState(false)
+    const artes = data.allSanityMuseoarte.nodes;
+    const [isChecked, setIsChacked] = useState(false)
+    const [autoplay, setAutoplay] = useState(0)
+    const [estado, setEstado] = useState(false)
+    const [dataModal, setDataModal] = useState(null)
+    const [imagen, setImagen] = useState(null)
+    const [musica, setMusica] = useState(null)
+    const [title, setTitle] = useState("")
 
-    useEffect(()=>{
-      
-    })
+
+    const Play = (index, url) => {
+        console.log(index, url)
+        let iframe = document.getElementById(`${index}`)
+        iframe.src = `${url}&&autoplay=1`
+
+    }
+
+    const abrirModal=()=>{
+
+    }
     return <Layout>
         <SEO title="Historias" keywords={[`gatsby`, `application`, `react`]} />
         <article>
-            <Grid className="cards-grid" sx={{
+
+            <Grid className="class-grid" sx={{
                 maxWidth: "1200px !important"
             }} gap={2} columns={[2, 4]}>
-              <Title className="title-card" options={{ scale: 2, max: 25,speed:400 }}>
-  
+                {
+                    artes.map((item, index) => {
+                        return <Title key={index} className="title-card" options={{ scale: 2, max: 25, speed: 400 }}>
 
-                <div className="card" >
-                    <img className="imagen-fondo" src="fondo.jpg" alt="imagen test" />
-                    <div className="content">
-                        <h2>01</h2>
-                        <h3>Card one</h3>
-                        <p>
-                            kasjdhfvkbal diogabuvsuhyldjbaLUIJKBSKaghsvñoiAS
-                            ablsjhvAJCSVCUklniguof8it7jbkoiñnhsduioay
-                        </p>
-                        <a class="" target="_blank" href="https://www.youtube.com/watch?v=rha1o1OnnBc&t=21s" alt="No funciona en burros" title="No funciona en burros">
-                            {isChecked ? <FontAwesomeIcon onClick={() => {}} color="white" icon={faPauseCircle} size="2x" /> : <FontAwesomeIcon href="https://www.youtube.com/watch?v=rha1o1OnnBc&t=21s" target="_blank" color="white" icon={faPlayCircle} size="2x" />}
 
-                        </a>
-                    </div>
-                </div>
-                </Title>
-                <Title className="title-card" options={{ scale: 2, max: 25,speed:400 }}>
-  
+                            <div className="card" >
+                                <img className="imagen-fondo" src={item.imagen.asset.url} alt="imagen test" />
+                                <div className="content">
+                                   
+                                    <h3>{item.title}</h3>
+                                  
+                                  
+                                    <div style={{ cursor: "pointer" }}>
+                                        <FontAwesomeIcon onClick={() => {
+                                           setDataModal(item.contenido)
+                                           setImagen(item.imagen.asset.url)
+                                           setMusica(item.musica)
+                                           setTitle(item.title)
+                                           setEstado(true)
 
-  <div className="card" >
-      <img className="imagen-fondo" src="fondo.jpg" alt="imagen test" />
-      <div className="content">
-          <h2>01</h2>
-          <h3>Card one</h3>
-          <p>
-              kasjdhfvkbal diogabuvsuhyldjbaLUIJKBSKaghsvñoiAS
-              ablsjhvAJCSVCUklniguof8it7jbkoiñnhsduioay
-          </p>
-          <a class="" target="_blank" href="https://www.youtube.com/watch?v=rha1o1OnnBc&t=21s" alt="No funciona en burros" title="No funciona en burros">
-              {isChecked ? <FontAwesomeIcon onClick={() => {}} color="white" icon={faPauseCircle} size="2x" /> : <FontAwesomeIcon href="https://www.youtube.com/watch?v=rha1o1OnnBc&t=21s" target="_blank" color="white" icon={faPlayCircle} size="2x" />}
+                                        }} color="white" icon={faBook} size="2x" />
+                                      
+                                    
 
-          </a>
-      </div>
-  </div>
-  </Title>
+                                    </div>
+                                </div>
+                            </div>
+                        </Title>
+
+                    })
+                }
+
             </Grid>
-
+            <Modal data={dataModal} title={title} estado={estado} imagen={imagen} musica={musica} cerrar={()=>setEstado(false)} />
         </article>
     </Layout>
 }
@@ -77,19 +96,29 @@ export default MuseoArte;
 
 export const query = graphql`
 {
-  allSanityHistorias {
-    nodes {
-      body
-      description
-      title
-      slug
-      banner {
-        asset {
-          gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+    allSanityMuseoarte {
+        nodes {
+        id
+          colabaracion
+          musica
+          title
+          contenido {
+            _type
+            style
+            children {
+              text
+              marks
+              _type
+              _key
+            }
+          }
+          imagen {
+            asset {
+              url
+            }
+          }
         }
       }
-    }
-  }
     
 }
 `;
