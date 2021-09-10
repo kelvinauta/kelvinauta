@@ -31,6 +31,7 @@
     "animate.css": "^4.1.1",
     "cross-env": "^7.0.3",
     "gatsby": "^3.11.1",
+    "gatsby-link": "^3.13.0",
     "gatsby-plugin-env-variables": "^2.1.0",
     "gatsby-plugin-fontawesome-css": "^1.1.0",
     "gatsby-plugin-image": "^1.12.0",
