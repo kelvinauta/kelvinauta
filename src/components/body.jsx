@@ -1,15 +1,20 @@
 import React from "react"
 import { jsx, Styled, Divider } from "theme-ui"
 import BlockContent from "@sanity/block-content-to-react"
-
-const serializers = {
-    types: {
-      code: (props) => (
-        <pre data-language={props.node.language}>
-          <code>{props.node.code}</code>
-        </pre>
-      ),
-    },
+const BlockRenderer = (props) => {
+    const {style = 'normal'} = props.node
+  
+    if (/^h\d/.test(style)) {
+      const level = style.replace(/[^\d]/g, '')
+      return React.createElement(style, {className: `heading-${level}`}, props.children)
+    }
+  
+    if (style === 'blockquote') {
+      return <blockquote>- {props.children}</blockquote>
+    }
+  
+    // Fall back to default handling
+    return BlockContent.defaultSerializers.types.block(props)
   }
 
 const Body = ({ document }) => {
@@ -33,7 +38,7 @@ const Body = ({ document }) => {
         }}
       >
         {document._rawChildren.map(block => {
-          return <BlockContent blocks={block} serializers={{listItem: ListItemRenderer}}
+          return <BlockContent blocks={block} serializers={{types: {block: BlockRenderer}}} 
           />
         })}
         <Divider />

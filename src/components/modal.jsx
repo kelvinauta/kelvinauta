@@ -3,6 +3,7 @@ import "animate.css"
 import BlockContent from "@sanity/block-content-to-react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock, faPauseCircle, faPlayCircle, faWindowClose } from "@fortawesome/free-solid-svg-icons";
+import ReactPlayer from 'react-player/youtube'
 const highlight = (props) => {
     return <span style={{ backgroundColor: props.mark.color }}>{props.children}</span>
 }
@@ -41,7 +42,14 @@ export const Modal = ({ data, title, estado, imagen, musica, cerrar }) => {
                 <br />
                 {
                     musica != null && <>
-                    <iframe style={{ opacity: 0 }} width="0" height="0" src={musicaUrl} title={title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                     <ReactPlayer
+                          width='1px'
+                          height='1px'
+                        style={{width:"1px",height:"1px",opacity:1}} url={musica}
+                        playing={isChecked}
+                       
+                        />
+                 
                     {isChecked ? <FontAwesomeIcon onClick={() => Pause()} color="white" icon={faPauseCircle} size="2x" /> : <FontAwesomeIcon onClick={() => Play()} color="white" icon={faPlayCircle} size="2x" />}
                     </>
                 }
