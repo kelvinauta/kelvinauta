@@ -1,135 +1,99 @@
+import Layout from "../components/layout";
 import React from "react";
 import PropTypes from "prop-types";
-import { StaticQuery, graphql, useStaticQuery } from "gatsby";
-import SEO from "../components/seo";
-import { Box, Grid } from "theme-ui";
-import Layout from "../components/layout";
+import { StaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import BlockContent from "@sanity/block-content-to-react";
+import { Box, Grid } from "theme-ui";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
+import SEO from "../components/seo";
 
-const BlockRenderer = (props) => {
-  const { style = "normal" } = props.node;
-
-  if (/^h\d/.test(style)) {
-    const level = style.replace(/[^\d]/g, "");
-    return React.createElement(
-      style,
-      { className: `heading-${level}` },
-      props.children
-    );
-  }
-
-  if (style === "blockquote") {
-    return <blockquote>- {props.children}</blockquote>;
-  }
-
-  // Fall back to default handling
-  return BlockContent.defaultSerializers.types.block(props);
-};
-
-const serializers = {
-  types: {
-    block(props) {
-      // if (props.node.listItem == "bullet") {
-      //   return <Styled.li>{props.children}</Styled.li>
-      // }
-      switch (props.node.style) {
-        case "h1":
-          return <div>asdfmkl</div>;
-        case "h2":
-          return <div>asdfmkl</div>;
-        case "h3":
-          return <div>asdfmkl</div>;
-        case "h4":
-          return <div>asdfmkl</div>;
-        case "h5":
-          return <div>asdfmkl</div>;
-        case "h6":
-          return <div>asdfmkl</div>;
-        case "blockquote":
-          return <div>asdfmkl</div>;
-        default:
-          return <div>asdfmkl</div>;
-      }
-    },
-  },
-  marks: {
-    link: ({ children, mark }) => {
-      return <div>asdfmkl</div>;
-    },
-  },
-};
-const highlight = (props) => {
-  return (
-    <span style={{ backgroundColor: props.mark.color }}>{props.children}</span>
-  );
-};
-
-const HistoriaTemplate = ({ data }) => {
-  const item = data.sanityHistorias;
-
-  item.contenido.map((i) => {
-    i.markDefs = [];
-    return i;
-  });
+const Historias = ({ data }) => {
+  const historias = data.allSanityHistorias.nodes;
   return (
     <Layout>
-      <SEO title={item.title} keywords={[`gatsby`, `application`, `react`]} />
-      <article style={{ color: "#d2d2d2" }}>
-        <Grid className="cards-grid" gap={2} columns={[2, "2fr 2fr"]}>
-          <Box>
-            <GatsbyImage
-              style={{ borderRadius: 16 }}
-              image={item.banner.asset.gatsbyImageData}
-            />
-          </Box>
-          <Box bg="muted">
-            <span style={{ fontSize: 24, color: "#fff", fontWeight: 900 }}>
-              {item.title}{" "}
-            </span>
+      <SEO title="Historias" keywords={[`gatsby`, `application`, `react`]} />
+      <article>
+        <Grid
+          className="cards-grid"
+          sx={{
+            maxWidth: "1200px !important",
+          }}
+          gap={2}
+          columns={[2, 2]}
+        >
+          {historias.map((item, index) => {
+            return (
+              <Link
+                style={{ textDecoration: "none" }}
+                to={`/historia/${item.slug}`}
+              >
+                <Box
+                  style={{
+                    backgroundColor: "#1f1f1f",
+                    padding: "24px",
+                    borderRadius: 16,
+                  }}
+                  className="card-cancion"
+                  key={index}
+                >
+                  <Grid gap={2} columns={[2, "1fr"]} className="cards-grid">
+                    <GatsbyImage
+                      style={{ borderRadius: 16 }}
+                      image={item.banner.asset.gatsbyImageData}
+                    />
+                    <div>
+                      <span
+                        style={{ fontSize: 24, color: "#fff", fontWeight: 900 }}
+                      >
+                        {item.title}{" "}
+                      </span>
+                      <span className="description">{item.description}</span>
 
-            <br />
-            <p>{item.description}</p>
-            <p>
-              <BlockContent
-                blocks={item.contenido}
-                serializers={{ marks: { highlight } }}
-              />
-            </p>
-          </Box>
+                      <p
+                        style={{
+                          textAlign: "right",
+                          color: "white",
+                          marginTop: 8,
+                        }}
+                      >
+                        Leer mas{" "}
+                        <FontAwesomeIcon
+                          color="white"
+                          style={{ paddingLeft: "8px", fontSize: "20px" }}
+                          icon={faArrowAltCircleRight}
+                          size="1x"
+                        />{" "}
+                      </p>
+                    </div>
+                  </Grid>
+                </Box>
+              </Link>
+            );
+          })}
         </Grid>
       </article>
     </Layout>
   );
 };
 
-HistoriaTemplate.propTypes = {
+Historias.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default HistoriaTemplate;
+export default Historias;
 
 export const query = graphql`
-  query Historia($slug: String) {
-    sanityHistorias(slug: { eq: $slug }) {
-      description
-      slug
-      title
-      contenido {
-        children {
-          marks
-          text
-          _type
-          _key
-        }
-        style
-        _key
-        _type
-        list
-      }
-      banner {
-        asset {
-          gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+  {
+    allSanityHistorias {
+      nodes {
+        description
+        title
+        slug
+        banner {
+          asset {
+            gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+          }
         }
       }
     }
