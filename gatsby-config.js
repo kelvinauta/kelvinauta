@@ -1,10 +1,10 @@
 module.exports = {
-  plugins: ["gatsby-plugin-react-helmet",
-  'gatsby-plugin-theme-ui',
-  `gatsby-plugin-sass`, 
+  plugins: [
+    "gatsby-plugin-theme-ui",
+    `gatsby-plugin-sass`,
     "gatsby-plugin-fontawesome-css",
     "gatsby-plugin-image",
-   
+
     {
       resolve: `gatsby-source-sanity`,
       options: {
@@ -16,7 +16,8 @@ module.exports = {
 
         // If the Sanity GraphQL API was deployed using `--tag <name>`,
         // use `graphqlTag` to specify the tag name. Defaults to `default`.
-        graphqlTag: 'default',
+        graphqlTag: "default",
       },
-    }],
+    },
+  ],
 };
