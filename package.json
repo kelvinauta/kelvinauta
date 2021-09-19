@@ -30,6 +30,7 @@
     "@sanity/block-content-to-react": "^3.0.0",
     "@theme-ui/sidenav": "^0.10.0",
     "animate.css": "^4.1.1",
+    "countapi-js": "^1.0.2",
     "cross-env": "^7.0.3",
     "gatsby": "^3.11.1",
     "gatsby-link": "^3.13.0",
