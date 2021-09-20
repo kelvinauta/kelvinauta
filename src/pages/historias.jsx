@@ -7,6 +7,7 @@ import { Box, Grid } from "theme-ui";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import SEO from "../components/seo";
+import CountApi from "../components/CountApi";
 
 const Historias = ({ data }) => {
   const historias = data.allSanityHistorias.nodes;
@@ -25,6 +26,7 @@ const Historias = ({ data }) => {
           {historias.map((item, index) => {
             return (
               <Link
+                key={index}
                 style={{ textDecoration: "none" }}
                 to={`/historia/${item.slug}`}
               >
@@ -39,6 +41,7 @@ const Historias = ({ data }) => {
                 >
                   <Grid gap={2} columns={[2, "1fr"]} className="cards-grid">
                     <GatsbyImage
+                      alt={item.title}
                       style={{ borderRadius: 16 }}
                       image={item.banner.asset.gatsbyImageData}
                     />
@@ -73,13 +76,14 @@ const Historias = ({ data }) => {
           })}
         </Grid>
       </article>
+      <CountApi slug="historias" />
     </Layout>
   );
 };
 
-Historias.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+// Historias.propTypes = {
+//   children: PropTypes.node.isRequired,
+// };
 
 export default Historias;
 

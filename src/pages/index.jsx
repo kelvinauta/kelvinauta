@@ -5,7 +5,8 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Box, Grid, Button, Flex, Heading, ThemeProvider } from "theme-ui";
-
+import countapi from "countapi-js";
+import count from "../lib/count";
 import Layout from "../components/layout";
 import LoadingIncio from "../components/loading";
 import MusicIcon from "../components/music_float";
@@ -21,6 +22,15 @@ const Index = ({ data }) => {
       setInicio(true);
     }, 1500);
   });
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      window.location &&
+      window.location.hostname
+    ) {
+      // count();
+    }
+  }, []);
   const datos = data.allSanitySiteSettings.nodes[0];
   const canciones = data.allSanityCanciones.nodes;
   const historias = data.allSanityHistorias.nodes;
@@ -146,6 +156,7 @@ const Index = ({ data }) => {
               {canciones.map((item, index) => {
                 return (
                   <Link
+                    key={index}
                     style={{ textDecoration: "none" }}
                     to={`/cancion/${item.slug}`}
                   >
@@ -163,9 +174,9 @@ const Index = ({ data }) => {
                         height="250px"
                         src={item.enlace[0].youtube}
                         title="YouTube video player"
-                        frameborder="0"
+                        frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
+                        allowFullScreen
                       ></iframe>
 
                       <span
@@ -209,6 +220,7 @@ const Index = ({ data }) => {
                 {historias.map((item, index) => {
                   return (
                     <Link
+                      key={index}
                       style={{ textDecoration: "none" }}
                       to={`/historia/${item.slug}`}
                     >
@@ -227,6 +239,7 @@ const Index = ({ data }) => {
                           className="cards-grid"
                         >
                           <GatsbyImage
+                            alt={item.title || ""}
                             style={{ borderRadius: 16 }}
                             image={item.banner.asset.gatsbyImageData}
                           />

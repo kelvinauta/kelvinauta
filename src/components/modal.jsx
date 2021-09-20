@@ -11,12 +11,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import ReactPlayer from "react-player/youtube";
 import { jsx, Styled, Divider } from "theme-ui";
+import CountApi from "./CountApi";
 const highlight = (props) => {
   return (
     <span style={{ backgroundColor: props.mark.color }}>{props.children}</span>
   );
 };
-export const Modal = ({ data, title, estado, imagen, musica, cerrar }) => {
+export const Modal = ({ data, title, estado, imagen, musica, cerrar, id }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [musicaUrl, setMusicaUrl] = useState(musica);
 
@@ -72,14 +73,32 @@ export const Modal = ({ data, title, estado, imagen, musica, cerrar }) => {
       },
     },
   };
-  console.log(data);
   return (
     <div className={estado === true ? "mostrarModal" : "ocultarModal"}>
+      {estado === true && (
+        <div
+          sx={{
+            position: "absolute",
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "transparente",
+          }}
+          onClick={() => {
+            cerrar();
+          }}
+        >
+          <CountApi slug={id} />
+        </div>
+      )}
       <div className="modal_content animate__animated animate__fadeInDown">
         <div className="imagen_modal">
           <img className="" src={imagen} alt="imagen test" />
         </div>
-        <div className="contenido_modal">
+        <div className="contenido_modal" sx={{ zIndex: 2 }}>
           <h2>{title} </h2>
           {data &&
             data.map((block) => {
@@ -129,6 +148,7 @@ export const Modal = ({ data, title, estado, imagen, musica, cerrar }) => {
             setIsChecked(false);
             cerrar();
           }}
+          sx={{ zIndex: 2 }}
           color="white"
           icon={faWindowClose}
           size="2x"
