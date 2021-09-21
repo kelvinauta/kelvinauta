@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { StaticQuery, graphql, useStaticQuery } from "gatsby";
 import SEO from "../components/seo";
 import { Box, Grid } from "theme-ui";
@@ -28,8 +28,9 @@ const BlockRenderer = (props) => {
   return BlockContent.defaultSerializers.types.block(props);
 };
 
-const CancionTemplate = ({ data }) => {
-  const item = data.sanityCanciones;
+const CancionTemplate = ({ pageContext }) => {
+  console.log;
+  const item = pageContext;
   const highlight = (props) => {
     return (
       <span style={{ backgroundColor: props.mark.color }}>
@@ -125,30 +126,30 @@ const CancionTemplate = ({ data }) => {
 
 export default CancionTemplate;
 
-export const query = graphql`
-  query Cancion($slug: String) {
-    sanityCanciones(slug: { eq: $slug }) {
-      id
-      lore
-      tiktoks
-      title
-      slug
+// export const query = graphql`
+//   query Cancion($slug: String) {
+//     sanityCanciones(slug: { eq: $slug }) {
+//       id
+//       lore
+//       tiktoks
+//       title
+//       slug
 
-      contenido {
-        style
-        _type
-        _key
-        children {
-          marks
-          text
-          _type
-          _key
-        }
-      }
-      enlace {
-        spotify
-        youtube
-      }
-    }
-  }
-`;
+//       contenido {
+//         style
+//         _type
+//         _key
+//         children {
+//           marks
+//           text
+//           _type
+//           _key
+//         }
+//       }
+//       enlace {
+//         spotify
+//         youtube
+//       }
+//     }
+//   }
+// `;

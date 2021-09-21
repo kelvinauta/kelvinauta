@@ -1,43 +1,78 @@
-const path = require(`path`)
+const path = require(`path`);
 
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
 
-  exports.createPages = async ({ graphql, actions }) => {
-    const { createPage } = actions
-  
-    const result = await graphql(`
-      {
-        canciones: allSanityCanciones {
-          nodes {
-            slug
+  const result = await graphql(`
+    {
+      canciones: allSanityCanciones {
+        nodes {
+          id
+          lore
+          tiktoks
+          title
+          slug
+
+          contenido {
+            style
+            _type
+            _key
+            children {
+              marks
+              text
+              _type
+              _key
+            }
           }
-        }
-        historias: allSanityHistorias {
-          nodes {          
-            slug            
+          enlace {
+            spotify
+            youtube
           }
         }
       }
-    `)
-  
-   
-    if (result.errors) {
-      return;
+      historias: allSanityHistorias {
+        nodes {
+          description
+          slug
+          title
+          contenido {
+            children {
+              marks
+              text
+              _type
+              _key
+            }
+            style
+            _key
+            _type
+            list
+          }
+          banner {
+            asset {
+              gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+            }
+          }
+        }
+      }
     }
-  
-    result.data.canciones.nodes.forEach(cancion => {
-      createPage({
-        path:"/cancion/"+cancion.slug,
-        component:path.resolve("./src/templates/cancionTemplate.jsx"),
-        context:{slug:cancion.slug}
-    })
-    })
-    result.data.historias.nodes.forEach(historia => {
-      createPage({
-        path:"/historia/"+historia.slug,
-        component:path.resolve("./src/templates/historiaTemplate.jsx"),
-        context:{slug:historia.slug}
-    })
-    })
-  
-   
+  `);
+
+  if (result.errors) {
+    return;
   }
+
+  // result.data.canciones.nodes.forEach((cancion) => {
+  //   createPage({
+  //     path: "/cancion/" + cancion.slug,
+  //     component: path.resolve("./src/templates/cancionTemplate.jsx"),
+  //     context: cancion,
+  //   });
+  // });
+  // result.data.historias.nodes.forEach((historia) => {
+  //   createPage({
+  //     path: "/historia/" + historia.slug,
+  //     component: path.resolve("./src/templates/historiaTemplate.jsx"),
+  //     context: historia,
+  //   });
+  // });
+};

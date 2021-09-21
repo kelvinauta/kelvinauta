@@ -5,7 +5,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { graphql, Link } from "gatsby";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import React from "react";
 import { Flex, NavLink } from "theme-ui";
 
@@ -87,12 +87,12 @@ const Header = ({ data }) => {
   );
 };
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-};
+// Header.propTypes = {
+//   siteTitle: PropTypes.string,
+// };
 
-Header.defaultProps = {
-  siteTitle: ``,
-};
+// Header.defaultProps = {
+//   siteTitle: ``,
+// };
 
 export default Header;

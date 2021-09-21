@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 import "../assets/layout.css";
 
@@ -135,8 +135,8 @@ const Layout = ({ children }) => (
   />
 );
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+// Layout.propTypes = {
+//   children: PropTypes.node.isRequired,
+// };
 
 export default Layout;

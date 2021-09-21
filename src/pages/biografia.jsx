@@ -1,6 +1,6 @@
 import Layout from "../components/layout";
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -65,13 +65,13 @@ const Biografía = ({ data }) => {
 };
 
 // Biografía.propTypes = {
-//   children: PropTypes.node.isRequired
+//   children: PropTypes.node.isRequired,
 // };
 
 export default Biografía;
 
 export const query = graphql`
-  {
+  query Biografia {
     allSanityBiografy {
       nodes {
         epocas {

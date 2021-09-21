@@ -286,10 +286,15 @@ const Index = ({ data }) => {
     </>
   );
 };
+
+// Index.propTypes = {
+//   children: PropTypes.node.isRequired,
+// };
+
 export default Index;
 
 export const query = graphql`
-  {
+  query Index {
     allSanitySiteSettings {
       nodes {
         title

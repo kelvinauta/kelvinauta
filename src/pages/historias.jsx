@@ -1,6 +1,6 @@
 import Layout from "../components/layout";
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { StaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Box, Grid } from "theme-ui";
@@ -88,7 +88,7 @@ const Historias = ({ data }) => {
 export default Historias;
 
 export const query = graphql`
-  {
+  query Historias {
     allSanityHistorias {
       nodes {
         description

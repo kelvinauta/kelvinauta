@@ -2,7 +2,7 @@
 
 import Layout from "../components/layout";
 import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { StaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { jsx, Box, Grid } from "theme-ui";
@@ -125,7 +125,7 @@ const MuseoArte = ({ data }) => {
 export default MuseoArte;
 
 export const query = graphql`
-  {
+  query Museo {
     allSanityMuseoarte {
       nodes {
         id

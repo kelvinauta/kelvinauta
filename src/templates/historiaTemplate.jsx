@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { StaticQuery, graphql, useStaticQuery } from "gatsby";
 import SEO from "../components/seo";
 import { Box, Grid } from "theme-ui";
@@ -65,8 +65,8 @@ const highlight = (props) => {
   );
 };
 
-const HistoriaTemplate = ({ data }) => {
-  const item = data.sanityHistorias;
+const HistoriaTemplate = ({ pageContext }) => {
+  const item = pageContext;
 
   item.contenido.map((i) => {
     i.markDefs = [];
@@ -103,35 +103,35 @@ const HistoriaTemplate = ({ data }) => {
   );
 };
 
-HistoriaTemplate.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+// HistoriaTemplate.propTypes = {
+//   children: PropTypes.node.isRequired,
+// };
 
 export default HistoriaTemplate;
 
-export const query = graphql`
-  query Historias($slug: String) {
-    sanityHistorias(slug: { eq: $slug }) {
-      description
-      slug
-      title
-      contenido {
-        children {
-          marks
-          text
-          _type
-          _key
-        }
-        style
-        _key
-        _type
-        list
-      }
-      banner {
-        asset {
-          gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
-        }
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query Historias($slug: String) {
+//     sanityHistorias(slug: { eq: $slug }) {
+//       description
+//       slug
+//       title
+//       contenido {
+//         children {
+//           marks
+//           text
+//           _type
+//           _key
+//         }
+//         style
+//         _key
+//         _type
+//         list
+//       }
+//       banner {
+//         asset {
+//           gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
+//         }
+//       }
+//     }
+//   }
+// `;

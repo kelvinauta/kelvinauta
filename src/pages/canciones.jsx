@@ -1,6 +1,6 @@
 import Layout from "../components/layout";
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { StaticQuery, graphql, Link } from "gatsby";
 import SEO from "../components/seo";
 import { Box, Grid } from "theme-ui";
@@ -87,7 +87,7 @@ const Canciones = ({ data }) => {
 export default Canciones;
 
 export const query = graphql`
-  {
+  query Canciones {
     allSanityCanciones {
       nodes {
         id
