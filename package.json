@@ -33,7 +33,6 @@
     "countapi-js": "^1.0.2",
     "cross-env": "^7.0.3",
     "gatsby": "^4.0.0",
-    "gatsby-background-image": "^1.5.3",
     "gatsby-link": "^3.13.0",
     "gatsby-plugin-env-variables": "^2.1.0",
     "gatsby-plugin-fontawesome-css": "^1.1.0",
