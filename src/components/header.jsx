@@ -1,3 +1,4 @@
+// ** @jsx jsx *
 import {
   faAtom,
   faCoffee,
@@ -7,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { graphql, Link } from "gatsby";
 // import PropTypes from "prop-types";
 import React from "react";
-import { Flex, NavLink } from "theme-ui";
+import { jsx, Flex, NavLink } from "theme-ui";
 
 const Header = ({ data }) => {
   const url = typeof window !== "undefined" ? window.location.pathname : "";
@@ -15,7 +16,7 @@ const Header = ({ data }) => {
   return (
     <div className="container-header">
       <header>
-        <div className="container__nav">
+        <div className="container__nav" sx={{ borderRadius: 2 }}>
           <Flex className="logo">
             <Link
               style={{

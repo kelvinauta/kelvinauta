@@ -29,7 +29,7 @@ const BlockRenderer = (props) => {
 };
 
 const CancionTemplate = ({ pageContext }) => {
-  console.log;
+  console.log(pageContext);
   const item = pageContext;
   const highlight = (props) => {
     return (

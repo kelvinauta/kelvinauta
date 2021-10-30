@@ -1,10 +1,11 @@
+// ** @jsx jsx *
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons";
 import { graphql, Link, StaticQuery } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Box, Grid, Button, Flex, Heading, ThemeProvider } from "theme-ui";
+import { jsx, Box, Grid, Button, Flex, Heading, ThemeProvider } from "theme-ui";
 import countapi from "countapi-js";
 import count from "../lib/count";
 import Layout from "../components/layout";
@@ -13,6 +14,8 @@ import MusicIcon from "../components/music_float";
 import Seo from "../components/seo";
 import theme from "../gatsby-plugin-theme-ui";
 import Canciones from "./canciones";
+
+import ImageBackground from "gatsby-background-image";
 
 const Index = ({ data }) => {
   const [inicio, setInicio] = useState(false);
@@ -34,6 +37,7 @@ const Index = ({ data }) => {
   const datos = data.allSanitySiteSettings.nodes[0];
   const canciones = data.allSanityCanciones.nodes;
   const historias = data.allSanityHistorias.nodes;
+  console.log(data);
   return (
     <>
       {inicio === false && <LoadingIncio />}
@@ -49,7 +53,10 @@ const Index = ({ data }) => {
             >
               <div
                 className="content-imagen"
-                style={{ backgroundImage: "url(../fondo.png)" }}
+                sx={{
+                  backgroundImage: "url('/img/demonkleber.gif')",
+                  borderRadius: "16px",
+                }}
               >
                 <div className="datos">
                   <Flex className="redes-sociale">
@@ -114,23 +121,23 @@ const Index = ({ data }) => {
                   </Flex>
                   <div className="quien-soy">
                     <h2>Hola, yo soy</h2>
-                    <h1>Kleber Rivamontan</h1>
-                    <p className="texto">
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the industry's
-                      standard dummy text ever since the 1500s, when an unknown
-                      printer took a galley of type and scrambled it to make a
-                      type specimen book.
+                    <h1>Kelvinauta</h1>
+                    <p
+                      className="texto"
+                      sx={{ textShadow: "1px 1px 20px black" }}
+                    >
+                      Músico🎸/Programador💻/Psicología🧠/Magia🎩/Pixel
+                      art◽/Tengo un bigote 🥵
                     </p>
                   </div>
                 </div>
-                <div className="imagen-p">
+                {/* <div className="imagen-p">
                   <img
                     className="imagen_principal"
-                    src={`../kleber.png`}
+                    src={`/img/kelboceto.png`}
                     alt="fondo"
                   />
-                </div>
+                </div> */}
               </div>
             </Flex>
 
@@ -336,6 +343,26 @@ export const query = graphql`
             gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
           }
         }
+      }
+    }
+    imageSharp(id: { eq: "ca73d24a-6637-501d-bd62-cabe2397cd19" }) {
+      id
+      gatsbyImageData
+      fluid {
+        base64
+        tracedSVG
+        srcWebp
+        srcSetWebp
+        originalImg
+        originalName
+      }
+      fixed {
+        base64
+        tracedSVG
+        aspectRatio
+        srcWebp
+        srcSetWebp
+        originalName
       }
     }
   }

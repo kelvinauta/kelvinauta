@@ -61,18 +61,18 @@ exports.createPages = async ({ graphql, actions }) => {
     return;
   }
 
-  // result.data.canciones.nodes.forEach((cancion) => {
-  //   createPage({
-  //     path: "/cancion/" + cancion.slug,
-  //     component: path.resolve("./src/templates/cancionTemplate.jsx"),
-  //     context: cancion,
-  //   });
-  // });
-  // result.data.historias.nodes.forEach((historia) => {
-  //   createPage({
-  //     path: "/historia/" + historia.slug,
-  //     component: path.resolve("./src/templates/historiaTemplate.jsx"),
-  //     context: historia,
-  //   });
-  // });
+  result.data.canciones.nodes.forEach((cancion) => {
+    createPage({
+      path: "/cancion/" + cancion.slug,
+      component: path.resolve("./src/templates/cancionTemplate.jsx"),
+      context: cancion,
+    });
+  });
+  result.data.historias.nodes.forEach((historia) => {
+    createPage({
+      path: "/historia/" + historia.slug,
+      component: path.resolve("./src/templates/historiaTemplate.jsx"),
+      context: historia,
+    });
+  });
 };

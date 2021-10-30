@@ -4,7 +4,15 @@ module.exports = {
     `gatsby-plugin-sass`,
     "gatsby-plugin-fontawesome-css",
     "gatsby-plugin-image",
-
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: "./static/img",
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-source-sanity`,
       options: {
